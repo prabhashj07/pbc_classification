@@ -112,4 +112,4 @@ class ModelFactory:
 
 if __name__ == "__main__":
     model = ModelFactory("vit_base_patch16_224", 8)()
-    print(model)
+    # print(model)
