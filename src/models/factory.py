@@ -55,17 +55,17 @@ class Model(nn.Module):
                 model_name, pretrained=True, num_classes=num_classes
             )
 
-        # # Freeze model parameters except the classifier head
-        # for param in self.model.parameters():
-        #     param.requires_grad = False
+        # Freeze model parameters except the classifier head
+        for param in self.model.parameters():
+            param.requires_grad = False
 
-        # # Allow training of the classifier 
-        # if hasattr(self.model, "head"):
-        #     for param in self.model.head.parameters():
-        #         param.requires_grad = True
-        # elif hasattr(self.model, "fc"):
-        #     for param in self.model.fc.parameters():
-        #         param.requires_grad = True
+        # Allow training of the classifier 
+        if hasattr(self.model, "head"):
+            for param in self.model.head.parameters():
+                param.requires_grad = True
+        elif hasattr(self.model, "fc"):
+            for param in self.model.fc.parameters():
+                param.requires_grad = True
 
     def forward(self, x):
         """Forward pass through the model"""
